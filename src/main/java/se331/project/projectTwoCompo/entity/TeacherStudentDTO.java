@@ -2,9 +2,8 @@ package se331.project.projectTwoCompo.entity;
 
 import java.util.List;
 
-import com.google.auto.value.AutoValue.Builder;
-
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -2,8 +2,6 @@ package se331.project.projectTwoCompo.entity;
 
 import java.util.List;
 
-import com.google.auto.value.AutoValue.Builder;
-
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,7 +28,7 @@ public class Student {
     String surname;
     String department;
     @ManyToOne
-    Teacher teacher;
+    Teacher advisor;
     @ElementCollection
     List<String> images;
 }

@@ -1,8 +1,7 @@
 package se331.project.projectTwoCompo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.google.auto.value.AutoValue.Builder;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -11,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,8 +29,9 @@ public class Teacher {
     String firstname;
     String surname;
     String department;
-    @OneToMany
-    Student student;
+    @Builder.Default
+    @OneToMany(mappedBy = "advisor")
+    List<Student> advisee = new ArrayList<>();;
     @ElementCollection
     List<String> images;
 }
