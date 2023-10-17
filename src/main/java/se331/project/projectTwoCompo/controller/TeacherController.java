@@ -25,7 +25,7 @@ import java.util.List;
 public class TeacherController {
     List<Teacher> teacherList;
     final TeacherService teacherService;
-    @GetMapping("teachers")
+    @GetMapping("advisors")
     public ResponseEntity<?> getTeacherLists(@RequestParam(value ="_limit", required = false) Integer perPage,
                                             @RequestParam(value = "_page", required = false) Integer page,
                                             @RequestParam(value = "title", required = false) String title) {
@@ -44,7 +44,7 @@ public class TeacherController {
 
     }
 
-    @GetMapping("teachers/{id}")
+    @GetMapping("advisors/{id}")
     public ResponseEntity<?> getTeacher(@PathVariable("id") Long id) {
         Teacher output = teacherService.getTeacher(id);
         if (output != null){
@@ -54,7 +54,7 @@ public class TeacherController {
         }
     }
 
-    @PostMapping("/teachers")
+    @PostMapping("/advisors")
     public ResponseEntity<?> addTeacher(@RequestBody Teacher Teacher){
         Teacher output = teacherService.save(Teacher);
         return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(output));
