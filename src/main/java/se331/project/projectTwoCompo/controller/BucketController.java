@@ -21,12 +21,12 @@ public class BucketController {
     @PostMapping("/uploadFile")
     public ResponseEntity<?> uploadFile(@RequestPart(value = "file") MultipartFile file)
             throws IOException, ServletException {
-        return ResponseEntity.ok(this.cloudStorangHelper.getImageUrl(file, "imgup-23aa6.appspot.com"));
+        return ResponseEntity.ok(this.cloudStorangHelper.getImageUrl(file, "drowninworkbn.appspot.com"));
     }
 
     @PostMapping("/uploadImage")
     public ResponseEntity<?> uploadFileComponent(@RequestParam(value = "image") MultipartFile file) throws IOException, ServletException{
         return
-        ResponseEntity.ok(this.cloudStorangHelper.getStorageFileDto(file, "imgup-23aa6.appspot.com"));
+        ResponseEntity.ok(this.cloudStorangHelper.getStorageFileDto(file, "drowninworkbn.appspot.com"));
     }
 }
