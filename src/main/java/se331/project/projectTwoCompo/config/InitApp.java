@@ -40,6 +40,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         Student tempSt;
         tempSt = studentRepository.save(Student.builder()
+            .studentId("644115001")
             .firstname("Ariana")
             .surname("Grande")
             .department("Software Engineering")
@@ -48,6 +49,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         tempSt.setAdvisor(t1);
         t1.getAdvisee().add(tempSt);
         tempSt = studentRepository.save(Student.builder()
+            .studentId("644115002")
             .firstname("Olivia")
             .surname("Rodrigo")
             .department("Software Engineering")
@@ -56,6 +58,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         tempSt.setAdvisor(t1);
         t1.getAdvisee().add(tempSt);
         tempSt = studentRepository.save(Student.builder()
+            .studentId("644115032")
             .firstname("Kimberly")
             .surname("Kardashian")
             .department("Software Engineering")
@@ -64,6 +67,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         tempSt.setAdvisor(t2);
         t2.getAdvisee().add(tempSt);
         tempSt = studentRepository.save(Student.builder()
+            .studentId("642115004")
             .firstname("Taylor")
             .surname("Swift")
             .department("Software Engineering")

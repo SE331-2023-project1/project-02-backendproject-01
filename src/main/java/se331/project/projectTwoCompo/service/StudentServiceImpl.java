@@ -3,7 +3,6 @@ package se331.project.projectTwoCompo.service;
 import lombok.RequiredArgsConstructor;
 import se331.project.projectTwoCompo.dao.StudentDao;
 import se331.project.projectTwoCompo.entity.Student;
-import se331.project.projectTwoCompo.entity.Teacher;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

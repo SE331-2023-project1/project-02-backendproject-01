@@ -14,31 +14,30 @@ import se331.project.projectTwoCompo.repository.TeacherRepository;
 @RequiredArgsConstructor
 @Profile("db")
 public class TeacherDaoDBImpl implements TeacherDao{
-    final TeacherRepository TeacherRepository;
+    final TeacherRepository teacherRepository;
     @Override
     public Integer getTeacherSize() {
-        return Math.toIntExact(TeacherRepository.count());
+        return Math.toIntExact(teacherRepository.count());
     }
 
     @Override
     public Page<Teacher> getTeachers(Integer pageSize, Integer page) {
-        return TeacherRepository.findAll(PageRequest.of(page - 1, pageSize));
+        return teacherRepository.findAll(PageRequest.of(page - 1, pageSize));
     }
 
     @Override
     public Teacher getTeacher(Long id) {
-        return TeacherRepository.findById(id).orElse(null);
+        return teacherRepository.findById(id).orElse(null);
     }
 
     @Override
     public Teacher save(Teacher Teacher) {
-        return TeacherRepository.save(Teacher);
+        return teacherRepository.save(Teacher);
     }
 
     @Override
     public Page<Teacher> getTeachers(String title, Pageable page) {
-        // return TeacherRepository.findAll();
-        return null;
+        return teacherRepository.findByAcademicPositionIgnoreCaseContainingOrFirstnameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(title, title, title, page);
     }
 
 }

@@ -11,9 +11,6 @@ import java.util.List;
 
 public interface TeacherRepository extends JpaRepository<Teacher,Long> {
     List<Teacher> findAll();
-    // Page<Student> findByTitle(String title, Pageable pageRequest);
-    // Page<Event> findByTitleContaining(String title, Pageable pageRequest);
-    // Page<Event> findByTitleContainingOrDescriptionContaining(String title, String description, Pageable pageRequest);
-    // Page<Event> findByTitleContainingAndDescriptionContaining(String title, String description, Pageable pageRequest);
-    // Page<Event> findByTitleIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrOrganizer_NameIgnoreCaseContaining(String title, String description, String organizerName, Pageable pageRequest);
+    Page<Teacher> findByAcademicPositionIgnoreCaseContainingOrFirstnameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(String academicPosition, String firstname, String surname, Pageable pageRequest);
+    
 }
