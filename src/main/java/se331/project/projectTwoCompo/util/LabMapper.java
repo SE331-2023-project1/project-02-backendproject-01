@@ -3,7 +3,6 @@ package se331.project.projectTwoCompo.util;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import se331.project.projectTwoCompo.entity.Student;
