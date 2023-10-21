@@ -24,6 +24,7 @@ public class CommentMessage {
     @ManyToOne
     CommentHistory from;
     String message;
-    Boolean sentFromAdviser;
     String timeSent;
+    Boolean sentFromAdviser;
+    
 }

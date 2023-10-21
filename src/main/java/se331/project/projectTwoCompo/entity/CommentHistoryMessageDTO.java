@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class CommentHistoryMessageDTO {
     Long id;
     String message;
-    Boolean sentFromAdviser;
     String timeSent;
+    Boolean sentFromAdviser;
+    
 }
