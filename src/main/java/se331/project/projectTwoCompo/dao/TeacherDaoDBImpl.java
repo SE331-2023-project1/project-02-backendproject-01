@@ -1,4 +1,6 @@
 package se331.project.projectTwoCompo.dao;
+import java.util.Optional;
+
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +30,11 @@ public class TeacherDaoDBImpl implements TeacherDao{
     @Override
     public Teacher getTeacher(Long id) {
         return teacherRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Optional<Teacher> findById(Long id){
+        return teacherRepository.findById(id);
     }
 
     @Override

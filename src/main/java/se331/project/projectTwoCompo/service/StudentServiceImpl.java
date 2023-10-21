@@ -2,7 +2,9 @@ package se331.project.projectTwoCompo.service;
 
 import lombok.RequiredArgsConstructor;
 import se331.project.projectTwoCompo.dao.StudentDao;
+import se331.project.projectTwoCompo.dao.TeacherDao;
 import se331.project.projectTwoCompo.entity.Student;
+import se331.project.projectTwoCompo.entity.Teacher;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +17,7 @@ import jakarta.transaction.Transactional;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService{
     final StudentDao studentDao;
-    // final TeacherDao teacherDao;
+    final TeacherDao teacherDao;
     @Override
     public Integer getStudentSize() {
         return studentDao.getStudentSize();
@@ -34,9 +36,8 @@ public class StudentServiceImpl implements StudentService{
     @Override
     @Transactional
     public Student save(Student student) {
-        // Organizer organizer = organizerDao.findById(event.getOrganizer().getId()).orElse(null);
-        // event.setOrganizer(organizer);
-        // organizer.getOwnEvents().add(event);
+        Teacher teacher = teacherDao.findById(student.getAdvisor().getId()).orElse(null);
+        teacher.getAdvisee().add(student);
         return studentDao.save(student);
     }
 
