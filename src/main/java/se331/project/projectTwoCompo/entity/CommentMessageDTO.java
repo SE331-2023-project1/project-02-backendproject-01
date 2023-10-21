@@ -14,4 +14,5 @@ public class CommentMessageDTO {
     CommentMessageHistoryDTO from;
     String message;
     Boolean sentFromAdviser;
+    String timeSent;
 }
