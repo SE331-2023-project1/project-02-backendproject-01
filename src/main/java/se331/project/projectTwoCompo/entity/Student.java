@@ -25,6 +25,7 @@ public class Student {
     @EqualsAndHashCode.Exclude
     Long id;
     String studentId;
+    String studentPw;
     String firstname;
     String surname;
     String department;
