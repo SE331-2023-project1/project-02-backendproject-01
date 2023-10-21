@@ -16,17 +16,17 @@ import se331.project.projectTwoCompo.util.CloudStorageHelper;
 @Controller
 @RequiredArgsConstructor
 public class BucketController {
-    final CloudStorageHelper cloudStorangHelper;
+    final CloudStorageHelper cloudStorageHelper;
 
     @PostMapping("/uploadFile")
     public ResponseEntity<?> uploadFile(@RequestPart(value = "file") MultipartFile file)
             throws IOException, ServletException {
-        return ResponseEntity.ok(this.cloudStorangHelper.getImageUrl(file, "drowninworkbn.appspot.com"));
+        return ResponseEntity.ok(this.cloudStorageHelper.getImageUrl(file, "drowninworkbn.appspot.com"));
     }
 
     @PostMapping("/uploadImage")
     public ResponseEntity<?> uploadFileComponent(@RequestParam(value = "image") MultipartFile file) throws IOException, ServletException{
         return
-        ResponseEntity.ok(this.cloudStorangHelper.getStorageFileDto(file, "drowninworkbn.appspot.com"));
+        ResponseEntity.ok(this.cloudStorageHelper.getStorageFileDto(file, "drowninworkbn.appspot.com"));
     }
 }
