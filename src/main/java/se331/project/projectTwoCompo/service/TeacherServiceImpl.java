@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
 @RequiredArgsConstructor
 public class TeacherServiceImpl implements TeacherService{
     final TeacherDao TeacherDao;
-    // final TeacherDao teacherDao;
+
     @Override
     public Integer getTeacherSize() {
         return TeacherDao.getTeacherSize();
@@ -34,9 +34,6 @@ public class TeacherServiceImpl implements TeacherService{
     @Override
     @Transactional
     public Teacher save(Teacher Teacher) {
-        // Organizer organizer = organizerDao.findById(event.getOrganizer().getId()).orElse(null);
-        // event.setOrganizer(organizer);
-        // organizer.getOwnEvents().add(event);
         return TeacherDao.save(Teacher);
     }
 

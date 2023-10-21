@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import se331.project.projectTwoCompo.entity.CommentHistory;
+import se331.project.projectTwoCompo.entity.CommentMessage;
 import se331.project.projectTwoCompo.entity.Student;
 import se331.project.projectTwoCompo.entity.Teacher;
+import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
+import se331.project.projectTwoCompo.repository.CommentMessageRepository;
 import se331.project.projectTwoCompo.repository.StudentRepository;
 import se331.project.projectTwoCompo.repository.TeacherRepository;
 
@@ -17,6 +21,8 @@ import se331.project.projectTwoCompo.repository.TeacherRepository;
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final StudentRepository studentRepository;
     final TeacherRepository teacherRepository;
+    final CommentMessageRepository commentMessageRepository;
+    final CommentHistoryRepository commentHistoryRepository;
 
     @Override
     @Transactional
@@ -49,6 +55,37 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         tempSt.setAdvisor(t1);
         t1.getAdvisee().add(tempSt);
+        CommentHistory his1 = commentHistoryRepository.save(CommentHistory.builder()
+            .adviseeId(tempSt.getId())
+            .advisorId(t1.getId())
+            .build()
+        );
+        CommentHistory his2 = commentHistoryRepository.save(CommentHistory.builder()
+            .adviseeId(tempSt.getId())
+            .advisorId(t2.getId())
+            .build()
+        );
+        CommentMessage msg1 = commentMessageRepository.save(CommentMessage.builder()
+            .message("hello")
+            .sentFromAdviser(false)
+            .build()
+        );
+        msg1.setFrom(his1);
+        his1.getHistory().add(msg1);
+        CommentMessage msg2 = commentMessageRepository.save(CommentMessage.builder()
+            .message("no")
+            .sentFromAdviser(true)
+            .build()
+        );
+        msg2.setFrom(his1);
+        his1.getHistory().add(msg2);
+        CommentMessage msg3 = commentMessageRepository.save(CommentMessage.builder()
+            .message("why")
+            .sentFromAdviser(false)
+            .build()
+        );
+        msg3.setFrom(his1);
+        his1.getHistory().add(msg3);
         tempSt = studentRepository.save(Student.builder()
             .studentId("644115002")
             .firstname("Olivia")
