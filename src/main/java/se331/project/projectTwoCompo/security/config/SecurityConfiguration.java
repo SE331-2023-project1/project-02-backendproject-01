@@ -3,6 +3,7 @@ package se331.project.projectTwoCompo.security.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,7 +30,16 @@ public class SecurityConfiguration {
     });
     http.csrf((crsf) -> crsf.disable())
             .authorizeHttpRequests((authorize) -> {
-                authorize.requestMatchers("/api/v1/auth/**").permitAll().anyRequest().authenticated();
+                authorize.requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/students").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/advisors").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/add-student").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/add-advisor").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/uploadFile").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/uploadImage").hasRole("ADMIN")
+                        .anyRequest().authenticated();
             })
 
             .sessionManagement((session) ->{

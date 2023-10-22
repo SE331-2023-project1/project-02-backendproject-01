@@ -1,6 +1,7 @@
 package se331.project.projectTwoCompo.config;
 //TEST COMMIT
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -141,7 +142,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("admin")
                 .lastname("admin")
                 .email("admin@admin.com")
-                .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
 
         user2 = User.builder()
@@ -150,7 +150,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("user")
                 .lastname("user")
                 .email("enabled@user.com")
-                .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
 
         user3 = User.builder()
@@ -159,9 +158,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("disableUser")
                 .lastname("disableUser")
                 .email("disabledUser@user.com")
-                .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
+
+
         user1.getRoles().add(Role.ROLE_ADMIN);
+        user1.getRoles().add(Role.ROLE_DISTRIBUTOR);
         user2.getRoles().add(Role.ROLE_DISTRIBUTOR);
         user3.getRoles().add(Role.ROLE_DISTRIBUTOR);
 

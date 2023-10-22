@@ -35,8 +35,6 @@ public class User implements UserDetails {
   @Column(unique = true)
   private String username;
   private String email;
-
-  private Boolean enabled;
   private String password;
 
   private Date lastPasswordResetDate;
