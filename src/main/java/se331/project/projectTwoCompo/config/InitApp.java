@@ -60,11 +60,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .advisorId(t1.getId())
             .build()
         );
-        CommentHistory his2 = commentHistoryRepository.save(CommentHistory.builder()
-            .adviseeId(tempSt.getId())
-            .advisorId(t2.getId())
-            .build()
-        );
         CommentMessage msg1 = commentMessageRepository.save(CommentMessage.builder()
             .message("hello")
             .sentFromAdvisor(false)
@@ -99,6 +94,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         tempSt.setAdvisor(t1);
         t1.getAdvisee().add(tempSt);
+        CommentHistory his2 = commentHistoryRepository.save(CommentHistory.builder()
+            .adviseeId(tempSt.getId())
+            .advisorId(t1.getId())
+            .build()
+        );
         tempSt = studentRepository.save(Student.builder()
             .studentId("644115032")
             .firstname("Kimberly")
@@ -108,6 +108,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         tempSt.setAdvisor(t2);
         t2.getAdvisee().add(tempSt);
+        CommentHistory his3 = commentHistoryRepository.save(CommentHistory.builder()
+            .adviseeId(tempSt.getId())
+            .advisorId(t2.getId())
+            .build()
+        );
         tempSt = studentRepository.save(Student.builder()
             .studentId("642115004")
             .firstname("Taylor")
@@ -117,6 +122,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         tempSt.setAdvisor(t2);
         t2.getAdvisee().add(tempSt);
+        CommentHistory his4 = commentHistoryRepository.save(CommentHistory.builder()
+            .adviseeId(tempSt.getId())
+            .advisorId(t2.getId())
+            .build()
+        );
 
         System.out.println("Init Finished.");
     }
