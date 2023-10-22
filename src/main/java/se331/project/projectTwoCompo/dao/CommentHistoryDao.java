@@ -1,5 +1,7 @@
 package se331.project.projectTwoCompo.dao;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,4 +13,5 @@ public interface CommentHistoryDao {
     CommentHistory getCommentHistory(Long id);
     CommentHistory save(CommentHistory commentHistory);
     Page<CommentHistory> getCommentHistory(Integer advisorId, Integer adviseeId, Pageable page);
+    Optional<CommentHistory> findById(Long id);
 }

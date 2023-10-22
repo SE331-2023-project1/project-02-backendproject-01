@@ -1,4 +1,6 @@
 package se331.project.projectTwoCompo.dao;
+import java.util.Optional;
+
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import se331.project.projectTwoCompo.entity.CommentHistory;
+import se331.project.projectTwoCompo.entity.Teacher;
 import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
 
 
@@ -42,6 +45,11 @@ public class CommentHistoryDaoDBImpl implements CommentHistoryDao{
         } catch(NumberFormatException e){
             return commentHistoryRepository.findAll(page);
         }
+    }
+
+    @Override
+    public Optional<CommentHistory> findById(Long id){
+        return commentHistoryRepository.findById(id);
     }
 
 }

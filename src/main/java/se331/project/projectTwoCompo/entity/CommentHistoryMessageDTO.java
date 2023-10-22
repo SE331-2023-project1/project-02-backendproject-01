@@ -13,6 +13,6 @@ public class CommentHistoryMessageDTO {
     Long id;
     String message;
     String timeSent;
-    Boolean sentFromAdviser;
+    Boolean sentFromAdvisor;
     
 }

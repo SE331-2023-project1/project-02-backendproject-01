@@ -25,6 +25,6 @@ public class CommentMessage {
     CommentHistory from;
     String message;
     String timeSent;
-    Boolean sentFromAdviser;
+    Boolean sentFromAdvisor;
     
 }

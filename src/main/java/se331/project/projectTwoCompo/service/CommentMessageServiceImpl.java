@@ -1,7 +1,9 @@
 package se331.project.projectTwoCompo.service;
 
 import lombok.RequiredArgsConstructor;
+import se331.project.projectTwoCompo.dao.CommentHistoryDao;
 import se331.project.projectTwoCompo.dao.CommentMessageDao;
+import se331.project.projectTwoCompo.entity.CommentHistory;
 import se331.project.projectTwoCompo.entity.CommentMessage;
 
 import org.springframework.data.domain.Page;
@@ -15,6 +17,7 @@ import jakarta.transaction.Transactional;
 @RequiredArgsConstructor
 public class CommentMessageServiceImpl implements CommentMessageService{
     final CommentMessageDao commentMessageDao;
+    final CommentHistoryDao commentHistoryDao;
 
     @Override
     public Integer getCommentMessageSize() {
@@ -34,6 +37,10 @@ public class CommentMessageServiceImpl implements CommentMessageService{
     @Override
     @Transactional
     public CommentMessage save(CommentMessage commentMessage) {
+        if(commentMessage.getFrom() != null){
+            CommentHistory history = commentHistoryDao.findById(commentMessage.getFrom().getId()).orElse(null);
+            history.getHistory().add(commentMessage);
+        }
         return commentMessageDao.save(commentMessage);
     }
 

@@ -67,7 +67,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         CommentMessage msg1 = commentMessageRepository.save(CommentMessage.builder()
             .message("hello")
-            .sentFromAdviser(false)
+            .sentFromAdvisor(false)
             .timeSent("now")
             .build()
         );
@@ -75,7 +75,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         his1.getHistory().add(msg1);
         CommentMessage msg2 = commentMessageRepository.save(CommentMessage.builder()
             .message("no")
-            .sentFromAdviser(true)
+            .sentFromAdvisor(true)
             .timeSent("when")
             .build()
         );
@@ -83,7 +83,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         his1.getHistory().add(msg2);
         CommentMessage msg3 = commentMessageRepository.save(CommentMessage.builder()
             .message("why")
-            .sentFromAdviser(false)
+            .sentFromAdvisor(false)
             .timeSent("idk")
             .build()
         );
