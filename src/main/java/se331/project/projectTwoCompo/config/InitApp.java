@@ -17,6 +17,7 @@ import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
 import se331.project.projectTwoCompo.repository.CommentMessageRepository;
 import se331.project.projectTwoCompo.repository.StudentRepository;
 import se331.project.projectTwoCompo.repository.TeacherRepository;
+import se331.project.projectTwoCompo.security.user.Role;
 import se331.project.projectTwoCompo.security.user.User;
 import se331.project.projectTwoCompo.security.user.UserRepository;
 
@@ -160,15 +161,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .email("disabledUser@user.com")
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
-        authorityRepository.save(authUser);
-        authorityRepository.save(authAdmin);
-        user1.getAuthorities().add(authUser);
-        user1.getAuthorities().add(authAdmin);
-        user2.getAuthorities().add(authUser);
-        user3.getAuthorities().add(authUser);
-        userRepository.save(user1);
-        userRepository.save(user2);
-        userRepository.save(user3);
+        user1.getRoles().add(Role.ROLE_ADMIN);
+        user2.getRoles().add(Role.ROLE_DISTRIBUTOR);
+        user3.getRoles().add(Role.ROLE_DISTRIBUTOR);
 
     }
     
