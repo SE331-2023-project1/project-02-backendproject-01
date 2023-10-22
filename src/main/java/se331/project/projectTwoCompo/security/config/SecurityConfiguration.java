@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -28,13 +29,14 @@ public class SecurityConfiguration {
     http.headers((headers) -> {
       headers.frameOptions((frameOptions) -> frameOptions.disable());
     });
-    http.csrf((crsf) -> crsf.disable())
+    http
+            .csrf((crsf) -> crsf.disable())
             .authorizeHttpRequests((authorize) -> {
                 authorize.requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/students").permitAll()
                         .requestMatchers(HttpMethod.GET, "/advisors").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/add-student").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/add-advisor").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/uploadFile").hasRole("ADMIN")
@@ -55,7 +57,7 @@ public class SecurityConfiguration {
               logout.logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
             })
     ;
-
+    http.cors(withDefaults());
     return http.build();
 
   }
