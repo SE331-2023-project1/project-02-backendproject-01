@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.projectTwoCompo.entity.Teacher;
+import se331.project.projectTwoCompo.entity.TeacherDTO;
 
 @Data
 @Builder
@@ -16,4 +18,6 @@ public class AuthenticationResponse {
   private String accessToken;
   @JsonProperty("refresh_token")
   private String refreshToken;
+  @JsonProperty("user")
+  private TeacherDTO user;
 }

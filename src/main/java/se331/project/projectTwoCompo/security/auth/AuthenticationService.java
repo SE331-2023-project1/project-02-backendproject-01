@@ -16,6 +16,7 @@ import se331.project.projectTwoCompo.security.token.TokenType;
 import se331.project.projectTwoCompo.security.user.Role;
 import se331.project.projectTwoCompo.security.user.User;
 import se331.project.projectTwoCompo.security.user.UserRepository;
+import se331.project.projectTwoCompo.util.LabMapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -63,6 +64,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
+            .user(LabMapper.INSTANCE.getTeacherDTO(user.getTeacher()))
             .build();
   }
 
@@ -110,6 +112,7 @@ public class AuthenticationService {
         AuthenticationResponse authResponse = AuthenticationResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
+                .user(LabMapper.INSTANCE.getTeacherDTO(user.getTeacher()))
                 .build();
         new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
       }

@@ -10,6 +10,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import se331.project.projectTwoCompo.entity.Teacher;
 import se331.project.projectTwoCompo.security.token.Token;
 
 import java.util.ArrayList;
@@ -44,6 +45,9 @@ public class User implements UserDetails {
   @Builder.Default
   @LazyCollection(LazyCollectionOption.FALSE)
   private List<Role> roles = new ArrayList<>();
+
+  @OneToOne(mappedBy = "user")
+  Teacher teacher;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
