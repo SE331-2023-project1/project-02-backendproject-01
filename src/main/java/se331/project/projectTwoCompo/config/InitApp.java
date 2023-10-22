@@ -3,6 +3,8 @@ package se331.project.projectTwoCompo.config;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import jakarta.transaction.Transactional;
@@ -15,6 +17,12 @@ import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
 import se331.project.projectTwoCompo.repository.CommentMessageRepository;
 import se331.project.projectTwoCompo.repository.StudentRepository;
 import se331.project.projectTwoCompo.repository.TeacherRepository;
+import se331.project.projectTwoCompo.security.user.User;
+import se331.project.projectTwoCompo.security.user.UserRepository;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
@@ -23,6 +31,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final TeacherRepository teacherRepository;
     final CommentMessageRepository commentMessageRepository;
     final CommentHistoryRepository commentHistoryRepository;
+    final UserRepository userRepository;
 
     @Override
     @Transactional
@@ -119,6 +128,48 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         t2.getAdvisee().add(tempSt);
 
         System.out.println("Init Finished.");
+
+        addUser();
+    }
+        User user1, user2, user3;
+    private void addUser() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        user1 = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .email("admin@admin.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
+
+        user2 = User.builder()
+                .username("user")
+                .password(encoder.encode("user"))
+                .firstname("user")
+                .lastname("user")
+                .email("enabled@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
+
+        user3 = User.builder()
+                .username("disableUser")
+                .password(encoder.encode("disableUser"))
+                .firstname("disableUser")
+                .lastname("disableUser")
+                .email("disabledUser@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
+        authorityRepository.save(authUser);
+        authorityRepository.save(authAdmin);
+        user1.getAuthorities().add(authUser);
+        user1.getAuthorities().add(authAdmin);
+        user2.getAuthorities().add(authUser);
+        user3.getAuthorities().add(authUser);
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+
     }
     
 }
