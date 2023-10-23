@@ -64,7 +64,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
-            .user(LabMapper.INSTANCE.getTeacherDTO(user.getTeacher()))
+            .user(LabMapper.INSTANCE.getStudentAuthDTO(user.getStudent()))
             .build();
   }
 
@@ -112,7 +112,8 @@ public class AuthenticationService {
         AuthenticationResponse authResponse = AuthenticationResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .user(LabMapper.INSTANCE.getTeacherDTO(user.getTeacher()))
+//                .user(LabMapper.INSTANCE.getTeacherDTO(user.getTeacher()))
+                .user(LabMapper.INSTANCE.getStudentAuthDTO(user.getStudent()))
                 .build();
         new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
       }

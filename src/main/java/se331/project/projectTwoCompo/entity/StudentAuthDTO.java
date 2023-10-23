@@ -3,22 +3,19 @@ package se331.project.projectTwoCompo.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.auto.value.AutoValue.Builder;
+
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.projectTwoCompo.security.user.Role;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherDTO {
+public class StudentAuthDTO {
     Long id;
-    String academicPosition;
-    String firstname;
-    String surname;
-    String department;
-    @Builder.Default
-    List<TeacherStudentDTO> advisee = new ArrayList<>();
-    List<String> images;
+    String name;
+    List<Role> roles = new ArrayList<>();
 }
