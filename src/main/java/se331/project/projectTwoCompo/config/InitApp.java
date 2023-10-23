@@ -132,10 +132,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         System.out.println("Init Finished.");
 
         addUser();
-        t1.setUser(user1);
-        user1.setTeacher(t1);
-        tempSt.setUser(user2);
-        user2.setStudent(tempSt);
+        t1.setUserTeacher(user1);
+        user1.setUserTeacher(t1);
+        tempSt.setUserStudent(user2);
+        user2.setUserStudent(tempSt);
     }
         User user1, user2, user3;
     private void addUser() {

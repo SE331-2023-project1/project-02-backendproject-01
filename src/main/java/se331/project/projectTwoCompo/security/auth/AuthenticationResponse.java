@@ -20,9 +20,8 @@ public class AuthenticationResponse {
   private String accessToken;
   @JsonProperty("refresh_token")
   private String refreshToken;
-  @JsonProperty("user")
-  private TeacherDTO users;
-
-  @JsonProperty("user")
-  private StudentAuthDTO user;
+  @JsonProperty("userTeacher")
+  private TeacherDTO userTeacher;
+  @JsonProperty("userStudent")
+  private StudentAuthDTO userStudent;
 }

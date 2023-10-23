@@ -19,6 +19,6 @@ public interface LabMapper {
     List<CommentMessageDTO> getCommentMessageDTO(List<CommentMessage> commentMessage);
     CommentHistoryDTO getCommentHistoryDTO(CommentHistory commentHistory);
     List<CommentHistoryDTO> getCommentHistoryDTO(List<CommentHistory> commentHistory);
-    @Mapping(target = "roles", source = "user.roles")
+    @Mapping(target = "roles", source = "userStudent.roles")
     StudentAuthDTO getStudentAuthDTO(Student student);
 }

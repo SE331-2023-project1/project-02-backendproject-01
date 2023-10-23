@@ -47,11 +47,11 @@ public class User implements UserDetails {
   @LazyCollection(LazyCollectionOption.FALSE)
   private List<Role> roles = new ArrayList<>();
 
-  @OneToOne(mappedBy = "user")
-  Teacher teacher;
+  @OneToOne(mappedBy = "userTeacher")
+  Teacher userTeacher;
 
-  @OneToOne(mappedBy = "user")
-  Student student;
+  @OneToOne(mappedBy = "userStudent")
+  Student userStudent;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;

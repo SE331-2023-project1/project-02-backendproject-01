@@ -30,5 +30,5 @@ public class Student {
     @ElementCollection
     List<String> images;
     @OneToOne
-    User user;
+    User userStudent;
 }
