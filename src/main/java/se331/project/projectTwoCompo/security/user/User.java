@@ -10,6 +10,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import se331.project.projectTwoCompo.entity.Student;
 import se331.project.projectTwoCompo.entity.Teacher;
 import se331.project.projectTwoCompo.security.token.Token;
 
@@ -48,6 +49,9 @@ public class User implements UserDetails {
 
   @OneToOne(mappedBy = "user")
   Teacher teacher;
+
+  @OneToOne(mappedBy = "user")
+  Student student;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
