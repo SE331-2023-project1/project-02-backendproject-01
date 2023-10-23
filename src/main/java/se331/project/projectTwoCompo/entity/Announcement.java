@@ -31,6 +31,7 @@ public class Announcement {
     String timeSent;
     @ManyToOne
     Teacher advisor;
+    @Column(length = 2083)
     @ElementCollection
     List<String> files;
     
