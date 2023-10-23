@@ -79,6 +79,17 @@ public class CloudStorageHelper {
         return null;
     }
 
+    public StorageFileDto getStorageFileDtoAnnouncement(MultipartFile file, final String bucket)
+    throws IOException, ServletException {
+        final String fileName = file.getOriginalFilename();
+
+        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")){
+            String urlName = this.uploadFile(file, bucket);
+            return StorageFileDto.builder().name(urlName).build();
+        }
+        return null;
+    }
+
     public StorageFileDto getStorageFileDto(MultipartFile file, final String bucket)
     throws IOException, ServletException {
         final String fileName = file.getOriginalFilename();
