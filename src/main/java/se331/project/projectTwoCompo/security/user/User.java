@@ -47,7 +47,7 @@ public class User implements UserDetails {
   private List<Role> roles = new ArrayList<>();
 
   @OneToOne(mappedBy = "user")
-  Teacher teacher;
+  Teacher advisee;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
