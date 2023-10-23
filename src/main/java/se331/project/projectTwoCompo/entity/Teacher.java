@@ -30,6 +30,6 @@ public class Teacher {
     List<Student> advisee = new ArrayList<>();
     @ElementCollection
     List<String> images;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     User user;
 }

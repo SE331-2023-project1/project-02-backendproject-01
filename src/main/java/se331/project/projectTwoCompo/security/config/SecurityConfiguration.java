@@ -34,13 +34,13 @@ public class SecurityConfiguration {
             .authorizeHttpRequests((authorize) -> {
                 authorize.requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/students").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/advisors").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/add-student").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/add-advisor").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/uploadFile").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/uploadImage").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.GET, "/advisors").permitAll()
+//                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/add-student").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/add-advisor").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/uploadFile").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/uploadImage").hasRole("ADMIN")
                         .anyRequest().authenticated();
             })
 

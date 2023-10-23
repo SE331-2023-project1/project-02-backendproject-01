@@ -140,35 +140,27 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         User user1, user2, user3;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        user1 = User.builder()
+        user1 = userRepository.save(User.builder()
                 .username("admin")
                 .password(encoder.encode("admin"))
                 .firstname("admin")
                 .lastname("admin")
                 .email("admin@admin.com")
-                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build());
 
-        user2 = User.builder()
+        user2 = userRepository.save(User.builder()
                 .username("user")
                 .password(encoder.encode("user"))
                 .firstname("user")
                 .lastname("user")
                 .email("enabled@user.com")
-                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
-
-        user3 = User.builder()
-                .username("disableUser")
-                .password(encoder.encode("disableUser"))
-                .firstname("disableUser")
-                .lastname("disableUser")
-                .email("disabledUser@user.com")
-                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant())).build();
-
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build());
 
         user1.getRoles().add(Role.ROLE_ADMIN);
         user1.getRoles().add(Role.ROLE_DISTRIBUTOR);
         user2.getRoles().add(Role.ROLE_DISTRIBUTOR);
-        user3.getRoles().add(Role.ROLE_DISTRIBUTOR);
 
     }
     
