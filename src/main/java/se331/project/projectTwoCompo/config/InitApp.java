@@ -7,10 +7,12 @@ import org.springframework.stereotype.Component;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import se331.project.projectTwoCompo.entity.Announcement;
 import se331.project.projectTwoCompo.entity.CommentHistory;
 import se331.project.projectTwoCompo.entity.CommentMessage;
 import se331.project.projectTwoCompo.entity.Student;
 import se331.project.projectTwoCompo.entity.Teacher;
+import se331.project.projectTwoCompo.repository.AnnouncementRepository;
 import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
 import se331.project.projectTwoCompo.repository.CommentMessageRepository;
 import se331.project.projectTwoCompo.repository.StudentRepository;
@@ -23,6 +25,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final TeacherRepository teacherRepository;
     final CommentMessageRepository commentMessageRepository;
     final CommentHistoryRepository commentHistoryRepository;
+    final AnnouncementRepository announcementRepository;
 
     @Override
     @Transactional
@@ -127,6 +130,22 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .advisorId(t2.getId())
             .build()
         );
+
+        Announcement ann1 = announcementRepository.save(Announcement.builder()
+            .title("Some Interesting Title")
+            .message("私の名前は吉良良景です。 私は33歳です。 私の家はすべての別荘がある森王の北東部にあり、私は結婚していません。私は亀湯百貨店の従業員として働いており、遅くとも午後8時までに毎日家に帰ります。 私は喫煙しませんが、時々飲みます。")
+            .timeSent("23/9/2023 15:13")
+            .build()
+        );
+        ann1.setAdvisor(t1);
+        Announcement ann2 = announcementRepository.save(Announcement.builder()
+            .title("Crazy?")
+            .message("Crazy? I was crazy once. They locked me in a room. A rubber room! A rubber room with rats,and rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room! A rubber room with rats,and rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room! A rubber room with rats,and rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room! A rubber room with rats,and rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room! A rubber room with rats,and rats make me crazy.")
+            .timeSent("23/9/2023 15:18")
+            .build()
+        );
+        ann2.setAdvisor(t1);
+
 
         System.out.println("Init Finished.");
     }

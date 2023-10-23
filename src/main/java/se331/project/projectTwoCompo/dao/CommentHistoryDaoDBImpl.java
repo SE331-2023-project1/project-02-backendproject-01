@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import se331.project.projectTwoCompo.entity.CommentHistory;
-import se331.project.projectTwoCompo.entity.Teacher;
 import se331.project.projectTwoCompo.repository.CommentHistoryRepository;
 
 

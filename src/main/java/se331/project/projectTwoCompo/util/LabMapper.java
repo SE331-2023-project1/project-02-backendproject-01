@@ -5,6 +5,8 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import se331.project.projectTwoCompo.entity.Announcement;
+import se331.project.projectTwoCompo.entity.AnnouncementDTO;
 import se331.project.projectTwoCompo.entity.CommentHistory;
 import se331.project.projectTwoCompo.entity.CommentHistoryDTO;
 import se331.project.projectTwoCompo.entity.CommentMessage;
@@ -25,4 +27,6 @@ public interface LabMapper {
     List<CommentMessageDTO> getCommentMessageDTO(List<CommentMessage> commentMessage);
     CommentHistoryDTO getCommentHistoryDTO(CommentHistory commentHistory);
     List<CommentHistoryDTO> getCommentHistoryDTO(List<CommentHistory> commentHistory);
+    AnnouncementDTO getAnnouncementDTO(Announcement announcement);
+    List<AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcement);
 }
