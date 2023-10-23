@@ -2,6 +2,7 @@ package se331.project.projectTwoCompo.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class Student {
     String department;
     @ManyToOne
     Teacher advisor;
+    @Column(length = 2083)
     @ElementCollection
     List<String> images;
 }

@@ -3,6 +3,7 @@ package se331.project.projectTwoCompo.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Teacher {
     @Builder.Default
     @OneToMany(mappedBy = "advisor")
     List<Student> advisee = new ArrayList<>();;
+    @Column(length = 2083)
     @ElementCollection
     List<String> images;
 }
