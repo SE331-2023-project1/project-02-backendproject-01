@@ -9,7 +9,7 @@ spring:
     password: password
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   servelet:
     multipart:
       max-file-size: 10MB
