@@ -55,5 +55,5 @@ jobs:
             echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
             docker compose -f docker-compose-newProd.yml down 
             docker compose -f docker-compose-newProd.yml pull
-            docker compose -f docker-compose-nweProd.yml up -d
+            docker compose -f docker-compose-newProd.yml up -d
             rm -rf /home/ubuntu/backend
