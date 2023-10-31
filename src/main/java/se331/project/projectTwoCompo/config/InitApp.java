@@ -1,5 +1,5 @@
 package se331.project.projectTwoCompo.config;
-//TEST COMMIT
+//TEST COMMIT 2
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
