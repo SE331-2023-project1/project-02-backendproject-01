@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class StudentDTO {
     Long id;
     String studentId;
-    String studentPw;
     String firstname;
     String surname;
     String department;

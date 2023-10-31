@@ -5,6 +5,7 @@ import se331.project.projectTwoCompo.entity.CommentMessage;
 import se331.project.projectTwoCompo.service.CommentMessageService;
 import se331.project.projectTwoCompo.util.LabMapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentMessageController {
     List<CommentMessage> commentMessageList;
+    @Autowired
     final CommentMessageService commentMessageService;
     @GetMapping("comments")
     public ResponseEntity<?> getCommentMessageLists(@RequestParam(value ="_limit", required = false) Integer perPage,

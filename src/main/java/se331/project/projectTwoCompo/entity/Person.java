@@ -10,18 +10,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import se331.project.projectTwoCompo.security.user.User;
 
 @Data
 @SuperBuilder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Teacher extends Person {
-    String username;
-    String academicPosition;
+public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Exclude
+    Long id;
+    String password;
+    String firstname;
+    String surname;
+    String department;
+    @OneToOne
+    User user;
+    @Column(length = 2083)
+    @ElementCollection
     @Builder.Default
-    @OneToMany(mappedBy = "advisor")
-    List<Student> advisee = new ArrayList<>();
-
+    List<String> images = new ArrayList<>();
 }

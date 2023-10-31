@@ -12,4 +12,7 @@ public interface StudentService {
     Student getStudent(Long id);
     Student save(Student student);
     Page<Student> getStudents(String title, Pageable pageable);
+    Page<Student> getStudents(Integer advisorId, String title, Pageable pageable);
+    Page<Student> getStudents(Integer advisorId, Pageable pageable);
+
 }

@@ -5,6 +5,7 @@ import se331.project.projectTwoCompo.entity.Teacher;
 import se331.project.projectTwoCompo.service.TeacherService;
 import se331.project.projectTwoCompo.util.LabMapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TeacherController {
     List<Teacher> teacherList;
+    @Autowired
     final TeacherService teacherService;
     @GetMapping("advisors")
     public ResponseEntity<?> getTeacherLists(@RequestParam(value ="_limit", required = false) Integer perPage,

@@ -11,6 +11,8 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student,Long> {
     List<Student> findAll();
+    Page<Student> findByAdvisor_Id(Integer advInteger, Pageable pageRequest);
+    Page<Student> findByAdvisor_IdAndStudentIdContainingOrFirstnameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(Integer advInteger, String studentId, String firstname, String surname, Pageable pageRequest);
     Page<Student> findByStudentIdContainingOrFirstnameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(String studentId, String firstname, String surname, Pageable pageRequest);
     Page<Student> findByFirstnameIgnoreCaseContainingOrSurnameIgnoreCaseContaining(String firstname, String surname, Pageable pageRequest);
 }

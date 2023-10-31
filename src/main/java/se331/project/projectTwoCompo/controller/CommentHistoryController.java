@@ -5,6 +5,7 @@ import se331.project.projectTwoCompo.entity.CommentHistory;
 import se331.project.projectTwoCompo.service.CommentHistoryService;
 import se331.project.projectTwoCompo.util.LabMapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentHistoryController {
     List<CommentHistory> commentHistoryList;
+    @Autowired
     final CommentHistoryService commentHistoryService;
     @GetMapping("history")
     public ResponseEntity<?> getCommentHistoryLists(@RequestParam(value ="_limit", required = false) Integer perPage,
