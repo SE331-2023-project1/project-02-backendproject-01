@@ -7,6 +7,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
   servelet:
     multipart:
       max-file-size: 10MB
