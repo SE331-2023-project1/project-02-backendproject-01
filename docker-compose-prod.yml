@@ -18,7 +18,7 @@ services:
   backend:
     image: gigasora/se331-backend:latest
     ports:
-      - 8999:8080
+      - 8080:8080
     environment:
       - JAVA_PROFILE=prod,db
     depends_on:
