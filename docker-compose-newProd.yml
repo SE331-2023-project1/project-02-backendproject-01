@@ -16,7 +16,7 @@ services:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: password
   backend:
-    image: somth/se331-backend:latest
+    image: gigasora/se331-backend:latest
     ports:
       - 8999:8080
     environment:
