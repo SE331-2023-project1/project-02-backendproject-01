@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    active:
-      - db
   datasource:
     url: jdbc:mysql://db:3306/seprojectdb?createDatabaseIfNotExist=true&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,9 +7,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
   servelet:
     multipart:
       max-file-size: 10MB
